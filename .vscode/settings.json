@@ -1,0 +1,128 @@
+{
+    "files.defaultLanguage": "cpp", // ctrl+N新建文件后默认的语言
+    "editor.formatOnType": true, // 输入时就进行格式化，默认触发字符较少，分号可以触发
+    "editor.snippetSuggestions": "top", // snippets代码优先显示补全
+
+    "code-runner.runInTerminal": true, // 设置成false会在“输出”中输出，无法输入
+    "code-runner.executorMap": {
+        "c": "cd $dir && clang $fileName -o $fileNameWithoutExt -Wall -g -Og -static-libgcc  && $dir$fileNameWithoutExt",
+        "cpp": "cd $dir && clang++ $fileName -o $fileNameWithoutExt -DDEBUG -Wshadow -Wall -g -Og -static-libgcc -fcolor-diagnostics -std=c++11 && $dir$fileNameWithoutExt"
+    }, // 设置code runner的命令行
+    "code-runner.saveFileBeforeRun": true, // run code前保存
+    "code-runner.preserveFocus": false, // 若为false，run code后光标会聚焦到终端上。如果需要频繁输入数据可设为false
+    "code-runner.clearPreviousOutput": false, // 每次run code前清空属于code runner的终端消息
+
+    "C_Cpp.clang_format_sortIncludes": true, // 格式化时调整include的顺序（按字母排序）
+    "C_Cpp.intelliSenseEngine": "Default", // 可以为Default或Tag Parser，后者较老，功能较简单。具体差别参考cpptools扩展文档
+    "C_Cpp.errorSquiggles": "Disabled", // 因为有clang的lint，所以关掉
+    "C_Cpp.autocomplete": "Disabled", // 因为有clang的补全，所以关掉
+
+    "clang.cflags": [ // 控制c语言静态检测的参数
+        "-std=c11",
+        "-Wall"
+    ],
+    "clang.cxxflags": [ // 控制c++静态检测时的参数
+        "-Wshadow",
+        "-std=c++11",
+        "-Wall",
+        "-Wshadow",
+        "-static-libgcc", // 静态链接libgcc
+        "-DDEBUG"
+    ],
+    "clang.completion.enable":true, // 效果效果比cpptools要好
+    "background.enabled": true,
+    "background.useDefault": false,
+    "background.customImages": [
+        
+        "file:///home/liuxinyuan/图片/23.png"
+    ],
+    "background.style": {
+    "content": "''",
+    "pointer-events": "none",
+    "position": "absolute",
+    "z-index": "99999",
+    "width": "100%",
+    "height": "100%",
+    "background-position": "center",
+    "background-repeat": "no-repeat",
+    "background-size": "cover",
+    "opacity": 0.1
+    },
+    "files.associations": {
+        "3659": "cpp",
+        "array": "cpp",
+        "*.tcc": "cpp",
+        "cctype": "cpp",
+        "clocale": "cpp",
+        "cmath": "cpp",
+        "cstdint": "cpp",
+        "cstdio": "cpp",
+        "cstdlib": "cpp",
+        "cwchar": "cpp",
+        "cwctype": "cpp",
+        "deque": "cpp",
+        "unordered_map": "cpp",
+        "vector": "cpp",
+        "exception": "cpp",
+        "fstream": "cpp",
+        "initializer_list": "cpp",
+        "iosfwd": "cpp",
+        "iostream": "cpp",
+        "istream": "cpp",
+        "limits": "cpp",
+        "new": "cpp",
+        "optional": "cpp",
+        "ostream": "cpp",
+        "sstream": "cpp",
+        "stdexcept": "cpp",
+        "streambuf": "cpp",
+        "string_view": "cpp",
+        "system_error": "cpp",
+        "type_traits": "cpp",
+        "tuple": "cpp",
+        "typeinfo": "cpp",
+        "utility": "cpp",
+        "b": "cpp",
+        "cstring": "cpp",
+        "algorithm": "cpp",
+        "atomic": "cpp",
+        "cstdarg": "cpp",
+        "cstddef": "cpp",
+        "ctime": "cpp",
+        "map": "cpp",
+        "memory": "cpp",
+        "memory_resource": "cpp",
+        "set": "cpp",
+        "string": "cpp",
+        "list": "cpp",
+        "chrono": "cpp",
+        "random": "cpp",
+        "valarray": "cpp",
+        "bitset": "cpp",
+        "cfenv": "cpp",
+        "cinttypes": "cpp",
+        "codecvt": "cpp",
+        "complex": "cpp",
+        "condition_variable": "cpp",
+        "csetjmp": "cpp",
+        "csignal": "cpp",
+        "cuchar": "cpp",
+        "forward_list": "cpp",
+        "unordered_set": "cpp",
+        "functional": "cpp",
+        "iterator": "cpp",
+        "numeric": "cpp",
+        "ratio": "cpp",
+        "regex": "cpp",
+        "future": "cpp",
+        "iomanip": "cpp",
+        "mutex": "cpp",
+        "scoped_allocator": "cpp",
+        "shared_mutex": "cpp",
+        "thread": "cpp",
+        "typeindex": "cpp",
+        "u95717": "cpp"
+    },
+    "editor.fontFamily": "'Source code pro medium', 'monospace', monospace, 'Source code pro medium'",
+    "C_Cpp.dimInactiveRegions": false
+}

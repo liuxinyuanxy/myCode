@@ -1,0 +1,10 @@
+
+var html = '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="260" height="346">' +
+    '<param name="movie" value="http://www.xiami.com/widget/34079201_1774380714,1774380720,1774380717,1774380712,1776246365,1774380711,1774380718,1775767090,1775540054,1774380713,1775270512,1774380719,1775923630,1774380715,1774380716,1776246358,1776246360,1776246364,1776246359,1776246362,1776246361,1776246363,1776246366,_260_346_dddddd_fcfcfc/multiPlayer.swf" />'+
+    '<param name="quality" value="high" />'+
+    '<param name="menu" value="false" />'+
+    '<param name="wmode" value="opaque" />'+
+    '<param name="allowScriptAccess" value="always" />'+
+    '<embed src="http://www.xiami.com/widget/34079201_1774380714,1774380720,1774380717,1774380712,1776246365,1774380711,1774380718,1775767090,1775540054,1774380713,1775270512,1774380719,1775923630,1774380715,1774380716,1776246358,1776246360,1776246364,1776246359,1776246362,1776246361,1776246363,1776246366,_260_346_dddddd_fcfcfc/multiPlayer.swf" allowScriptAccess="always" quality="high" wmode="opaque" menu="false" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="260" height="346"></embed>'+
+	'</object>';
+document.write(html);

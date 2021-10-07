@@ -1,0 +1,76 @@
+#include <cctype>
+#include <cstdio>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/hash_policy.hpp>
+#include <iostream>
+#define il inline
+#define re register
+#define gc getchar
+using namespace std;
+template <typename T>
+void read(T &s)
+{
+    s = 0;
+    char ch;
+    bool p = 0;
+    while (ch = gc(), p |= ch == '-', !isdigit(ch))
+        ;
+    while (s = s * 10 + ch - '0', ch = gc(), isdigit(ch))
+        s *= p ? -1 : 1;
+}
+__gnu_pbds::gp_hash_table<int, int> hs;
+typedef pair<int, int> P;
+const int MAXN = 200001;
+int vis[MAXN];
+int cnt;
+P p[MAXN];
+il void finish_it(int k)
+{
+    int x;
+    for (int i = 1; i <= k; ++i)
+        read(x);
+}
+int main()
+{
+    int n, m;
+    read(n), read(m);
+    for (int i = 1; i <= n; ++i)
+    {
+        int u, v;
+        read(u), read(v);
+        u = hs[u] ? hs[u] : hs[u] = ++cnt;
+        v = hs[v] ? hs[v] : hs[v] = ++cnt;
+        p[i].first = u, p[i].second = v;
+    }
+    for (int i = 1; i <= m; ++i)
+    {
+        int k;
+        read(k);
+        if (k < 3 || k > 10000)
+            putchar('B'), finish_it(k);
+        else
+        {
+            for (int j = 1; j <= cnt; ++j)
+                vis[j] = 0;
+            for (int j = 1; j <= k; ++j)
+            {
+                int x;
+                read(x);
+                vis[hs[x]] = 1;
+            }
+            bool kkk = 1;
+            for (int j = 1; j <= n; ++j)
+            {
+                if (vis[p[j].first] && vis[p[j].second])
+                {
+                    putchar('B');
+                    kkk = 0;
+                    break;
+                }
+            }
+            if (kkk)
+                putchar('W');
+        }
+    }
+    return 0;
+}
