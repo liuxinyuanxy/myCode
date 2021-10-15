@@ -19,5 +19,5 @@ int main()
 		ans = min(ans, anst);
 	}
 	cout << ans;
-	return 0;
+	return 0; 
 }
