@@ -6,7 +6,7 @@
     "code-runner.runInTerminal": true, // 设置成false会在“输出”中输出，无法输入
     "code-runner.executorMap": {
         "c": "cd $dir && clang $fileName -o $fileNameWithoutExt -Wall -g -Og -static-libgcc  && $dir$fileNameWithoutExt",
-        "cpp": "cd $dir && clang++ $fileName -o $fileNameWithoutExt -DDEBUG -Wshadow -Wall -g -Og -static-libgcc -fcolor-diagnostics -std=c++11 && $dir$fileNameWithoutExt"
+        "cpp": "cd $dir && clang++ $fileName -o /home/liuxinyuan/Documents/tempFile/$fileNameWithoutExt -DDEBUG -Wshadow -Wall -g -Og -static-libgcc -fcolor-diagnostics -std=c++11 && /home/liuxinyuan/Documents/tempFile/$fileNameWithoutExt"
     }, // 设置code runner的命令行
     "code-runner.saveFileBeforeRun": true, // run code前保存
     "code-runner.preserveFocus": false, // 若为false，run code后光标会聚焦到终端上。如果需要频繁输入数据可设为false
