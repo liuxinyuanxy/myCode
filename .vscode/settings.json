@@ -121,7 +121,8 @@
         "shared_mutex": "cpp",
         "thread": "cpp",
         "typeindex": "cpp",
-        "u95717": "cpp"
+        "u95717": "cpp",
+        "qwq.c": "cpp"
     },
     "editor.fontFamily": "'Source code pro medium', 'monospace', monospace, 'Source code pro medium'",
     "C_Cpp.dimInactiveRegions": false
