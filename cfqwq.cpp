@@ -2,6 +2,7 @@
 #include <cmath>
 #include <cstdio>
 #include <cstdlib>
+#include <ctype.h>
 #include <iostream>
 #include <queue>
 #include <set>
@@ -10,6 +11,19 @@
 #define il inline
 #define re register
 using namespace std;
+struct node
+{
+    int a, b;
+    int get_A()
+    {
+        return a;
+    }
+    int get_B()
+    {
+        return b;
+    }
+};
+node qwqwqwqwq;
 int lst[600];
 int temp[200000];
 int a[600];
