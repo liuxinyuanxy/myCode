@@ -1,13 +1,26 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
+#define gc getchar
+#define read(x) scanf("%d", &x)
 
 const int MAXN = 5000000;
-int fa[MAXN], son[MAXN][2], sze[MAXN], val[MAXN];
+int fa[MAXN], son[MAXN][2], sze[MAXN], val[MAXN], a[MAXN];
 int tag1[MAXN], tag2[MAXN];
 int sum[MAXN], maxl[MAXN], maxr[MAXN], maxsum[MAXN];
 int fre[MAXN], cnt = 0, top = 0;
 int rt;
+int max(int a,int b)
+{
+	return a > b ? a : b;
+}
+void swap(int *a, int *b)
+{
+	int t = *a;
+	*a = *b;
+	*b = t;
+}
 int new_node()
 {
 	return top ? fre[top--] : ++cnt;
@@ -54,14 +67,14 @@ void push_down(int o)
 		if ((v = ls(o)))
 		{
 			tag2[v] ^= 1;
-			swap(ls(v), rs(v));
-			swap(maxl[v], maxr[v]);
+			swap(&ls(v), &rs(v));
+			swap(&maxl[v], &maxr[v]);
 		}
 		if ((v = rs(o)))
 		{
 			tag2[v] ^= 1;
-			swap(ls(v), rs(v));
-			swap(maxl[v], maxr[v]);
+			swap(&ls(v), &rs(v));
+			swap(&maxl[v], &maxr[v]);
 		}
 		tag2[o] = 0;
 	}
@@ -182,8 +195,8 @@ void reverse(int pos, int tot)
 {
 	int o = split(pos, tot);
 	tag2[o] ^= 1;
-	swap(maxl[o], maxr[o]);
-	swap(ls(o), rs(o));
+	swap(&maxl[o], &maxr[o]);
+	swap(&ls(o), &rs(o));
 	updata(fa[o]);
 	updata(rt);
 }
@@ -196,10 +209,85 @@ int max_sum()
 {
 	return maxsum[rt];
 }
-int *a;
-int n;
+void finish()
+{
+    char ch;
+    while (ch = getchar(), !isspace(ch))
+        ;
+}
+int get_opt()
+{
+    char ch;
+    while (ch = getchar(), !isalpha(ch))
+        ;
+    if (ch == 'I')
+    {
+        finish();
+        return 1;
+    }
+    if (ch == 'D')
+    {
+        finish();
+        return 2;
+    }
+    if (ch == 'M')
+    {
+        ch = gc();
+        ch = gc();
+        if (ch == 'K')
+        {
+            finish();
+            return 3;
+        }
+        else
+        {
+            finish();
+            return 6;
+        }
+    }
+    if (ch == 'R')
+    {
+        finish();
+        return 4;
+    }
+    finish();
+    return 5;
+}
 int main()
 {
+	int n, m, pos, tot, c;
+	read(n);
+	read(m);
+	for (int i = 2; i <= n + 1; ++i)
+		read(a[i]);
 	a[1] = a[n + 2] = maxsum[0] = -0x3f3fffff;
 	build(&rt, 1, n + 2, a, 0);
+	for (int i = 1; i <= m; ++i)
+    {
+        int opt = get_opt();
+        if (opt == 6)
+            printf("%d\n", max_sum());
+        else
+        {
+            read(pos);
+			read(tot);
+			if (opt == 1)
+			{
+                for (int j = 1; j <= tot; ++j)
+                    read(a[j]);
+                insert(pos, tot, &rt);
+            }
+            else if (opt == 2)
+                del(pos, tot);
+            else if (opt == 4)
+                reverse(pos, tot);
+            else if (opt == 5)
+                printf("%d\n", get_sum(pos, tot));
+            else
+            {
+				read(c);
+				modify(pos, tot, c);
+            }
+        }
+    }
 }
