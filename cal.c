@@ -1,17 +1,16 @@
+#include <ctype.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
 #define gc getchar
-#define read(x) scanf("%d", &x)
-
-const int MAXN = 5000000;
+#define read(x) scanf("%d", &(x))
+#define MAXN 5000000
 int fa[MAXN], son[MAXN][2], sze[MAXN], val[MAXN], a[MAXN];
 int tag1[MAXN], tag2[MAXN];
 int sum[MAXN], maxl[MAXN], maxr[MAXN], maxsum[MAXN];
 int fre[MAXN], cnt = 0, top = 0;
 int rt;
-int max(int a,int b)
+int max(int a, int b)
 {
 	return a > b ? a : b;
 }
@@ -38,7 +37,7 @@ void updata(int o)
 }
 void push_down(int o)
 {
-	int v;
+	int v = 0;
 	if (tag1[o])
 	{
 		int c = val[o];
@@ -81,12 +80,25 @@ void push_down(int o)
 }
 void rotate(int x, int *k)
 {
-	int y = fa[x], z = fa[y];
+	int y = fa[x];
+	int z = fa[y];
 	int p = rs(y) == x;
 	if (y == *k)
-		*k = x;
+	{
+		{
+			{
+				*k = x;
+			}
+		}
+	}
 	else
-		son[z][rs(z) == y] = x;
+	{
+		{
+			{
+				son[z][rs(z) == y] = x;
+			}
+		}
+	}
 	fa[x] = z;
 	fa[y] = x;
 	fa[son[x][p ^ 1]] = y;
@@ -97,12 +109,19 @@ void rotate(int x, int *k)
 }
 void splay(int x, int *k)
 {
-	int y, z;
+	int y = 0;
+	int z = 0;
 	while (x != *k)
 	{
 		y = fa[x], z = fa[y];
 		if (y != *k)
-			rotate(ls(z) == y ^ ls(y) == x ? x : y, k);
+		{
+			{
+				{
+					rotate(ls(z) == y ^ ls(y) == x ? x : y, k);
+				}
+			}
+		}
 		rotate(x, k);
 	}
 }
@@ -113,11 +132,17 @@ void init(int o)
 void build(int *O, int l, int r, int *a, int f)
 {
 	if (l > r)
-		return;
+	{
+		{
+			{
+				return;
+			}
+		}
+	}
 	int o = new_node();
-    *O = o;
-    int m = mid(l, r);
-    init(o);
+	*O = o;
+	int m = mid(l, r);
+	init(o);
 	fa[o] = f;
 	val[o] = a[m];
 	sze[o] = r - l + 1;
@@ -138,23 +163,43 @@ int find(int k)
 	{
 		push_down(o);
 		if (sze[ls(o)] + 1 == k)
-			return o;
+		{
+			{
+				{
+					return o;
+				}
+			}
+		}
 		if (sze[ls(o)] + 1 > k)
-			o = ls(o);
+		{
+			{
+				{
+					o = ls(o);
+				}
+			}
+		}
 		else
-			k -= (sze[ls(o)] + 1), o = rs(o);
+		{
+			{
+				{
+					k -= (sze[ls(o)] + 1), o = rs(o);
+				}
+			}
+		}
 	}
 }
 int split(int pos, int tot)
 {
-	int l = find(pos), r = find(pos + tot + 1);
+	int l = find(pos);
+	int r = find(pos + tot + 1);
 	splay(l, &rt);
 	splay(r, &rs(l));
 	return ls(r);
 }
 void insert(int pos, int tot, int *a)
 {
-	int l = find(pos + 1), r = find(pos + 2);
+	int l = find(pos + 1);
+	int r = find(pos + 2);
 	splay(l, &rt);
 	splay(r, &rs(l));
 	build(&ls(r), 1, tot, a, r);
@@ -164,7 +209,13 @@ void insert(int pos, int tot, int *a)
 void dfs_del(int o)
 {
 	if (!o)
-		return;
+	{
+		{
+			{
+				return;
+			}
+		}
+	}
 	fre[++top] = o;
 	dfs_del(ls(o));
 	dfs_del(rs(o));
@@ -183,9 +234,21 @@ void modify(int pos, int tot, int c)
 	val[o] = c;
 	sum[o] = c * sze[o];
 	if (c > 0)
-		maxsum[o] = maxl[o] = maxr[o] = sum[o];
+	{
+		{
+			{
+				maxsum[o] = maxl[o] = maxr[o] = sum[o];
+			}
+		}
+	}
 	else
-		maxsum[o] = c, maxl[o] = maxr[o] = 0;
+	{
+		{
+			{
+				maxsum[o] = c, maxl[o] = maxr[o] = 0;
+			}
+		}
+	}
 	tag1[o] = 1;
 	tag2[o] = 0;
 	updata(fa[o]);
@@ -211,83 +274,133 @@ int max_sum()
 }
 void finish()
 {
-    char ch;
-    while (ch = getchar(), !isspace(ch))
-        ;
+	char ch = 0;
+	while (ch = getchar(), !isspace(ch))
+	{
+		{
+			{
+				;
+			}
+		}
+	}
 }
 int get_opt()
 {
-    char ch;
-    while (ch = getchar(), !isalpha(ch))
-        ;
-    if (ch == 'I')
-    {
-        finish();
-        return 1;
-    }
-    if (ch == 'D')
-    {
-        finish();
-        return 2;
-    }
-    if (ch == 'M')
-    {
-        ch = gc();
-        ch = gc();
-        if (ch == 'K')
-        {
-            finish();
-            return 3;
-        }
-        else
-        {
-            finish();
-            return 6;
-        }
-    }
-    if (ch == 'R')
-    {
-        finish();
-        return 4;
-    }
-    finish();
-    return 5;
+	char ch = 0;
+	while (ch = getchar(), !isalpha(ch))
+	{
+		{
+			{
+				;
+			}
+		}
+	}
+	if (ch == 'I')
+	{
+		finish();
+		return 1;
+	}
+	if (ch == 'D')
+	{
+		finish();
+		return 2;
+	}
+	if (ch == 'M')
+	{
+		ch = gc();
+		ch = gc();
+		if (ch == 'K')
+		{
+			finish();
+			return 3;
+		}
+
+		finish();
+		return 6;
+	}
+	if (ch == 'R')
+	{
+		finish();
+		return 4;
+	}
+	finish();
+	return 5;
 }
 int main()
 {
-	int n, m, pos, tot, c;
+	int n = 0;
+	int m = 0;
+	int pos = 0;
+	int tot = 0;
+	int c = 0;
 	read(n);
 	read(m);
 	for (int i = 2; i <= n + 1; ++i)
-		read(a[i]);
+	{
+		{
+			{
+				read(a[i]);
+			}
+		}
+	}
 	a[1] = a[n + 2] = maxsum[0] = -0x3f3fffff;
 	build(&rt, 1, n + 2, a, 0);
 	for (int i = 1; i <= m; ++i)
-    {
-        int opt = get_opt();
-        if (opt == 6)
-            printf("%d\n", max_sum());
-        else
-        {
-            read(pos);
+	{
+		int opt = get_opt();
+		if (opt == 6)
+		{
+			{
+				{
+					printf("%d\n", max_sum());
+				}
+			}
+		}
+		else
+		{
+			read(pos);
 			read(tot);
 			if (opt == 1)
 			{
-                for (int j = 1; j <= tot; ++j)
-                    read(a[j]);
-                insert(pos, tot, &rt);
-            }
-            else if (opt == 2)
-                del(pos, tot);
-            else if (opt == 4)
-                reverse(pos, tot);
-            else if (opt == 5)
-                printf("%d\n", get_sum(pos, tot));
-            else
-            {
+				for (int j = 1; j <= tot; ++j)
+				{
+					{
+						{
+							read(a[j]);
+						}
+					}
+				}
+				insert(pos, tot, a);
+			}
+			else if (opt == 2)
+			{
+				{
+					{
+						del(pos, tot);
+					}
+				}
+			}
+			else if (opt == 4)
+			{
+				{
+					{
+						reverse(pos, tot);
+					}
+				}
+			}
+			else if (opt == 5)
+			{
+				{
+					{
+						printf("%d\n", get_sum(pos, tot));
+					}
+				}
+			}
+			else
+			{
 				read(c);
 				modify(pos, tot, c);
-            }
-        }
-    }
+			}
+		}
+	}
 }
