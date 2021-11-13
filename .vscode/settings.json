@@ -5,7 +5,7 @@
 
     "code-runner.runInTerminal": true, // 设置成false会在“输出”中输出，无法输入
     "code-runner.executorMap": {
-        "c": "cd $dir && clang $fileName -o $fileNameWithoutExt -Wall -g -Og -static-libgcc  && $dir$fileNameWithoutExt",
+        "c": "cd $dir && clang $fileName -o $fileNameWithoutExt -Wall -std=c11 -g -Og -static-libgcc  && $dir$fileNameWithoutExt",
         "cpp": "cd $dir && clang++ $fileName -o /home/liuxinyuan/Documents/tempFile/$fileNameWithoutExt -DDEBUG -Wshadow -Wall -g -Og -static-libgcc -fcolor-diagnostics -std=c++11 && /home/liuxinyuan/Documents/tempFile/$fileNameWithoutExt"
     }, // 设置code runner的命令行
     "code-runner.saveFileBeforeRun": true, // run code前保存
