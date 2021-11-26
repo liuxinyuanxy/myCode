@@ -122,7 +122,8 @@
         "thread": "cpp",
         "typeindex": "cpp",
         "u95717": "cpp",
-        "qwq.c": "cpp"
+        "qwq.c": "cpp",
+        "ctype.h": "c"
     },
     "editor.fontFamily": "'Source code pro medium', 'monospace', monospace, 'Source code pro medium'",
     "C_Cpp.dimInactiveRegions": false

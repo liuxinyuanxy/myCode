@@ -18,26 +18,21 @@ int main()
     cin >> t;
     while (t--)
     {
-        cin >> n;
-        if (n & 1)
+        ll k, x;
+        cin >> k >> x;
+        if ((1 + k) * 1ll * k / 2 <= x)
         {
-            int a, b, c;
-            cin >> a >> b >> c;
-            if (b + c != 0)
-                cout << b + c << " " << -a << " " << -a << " ";
-            else if (a + c != 0)
-                cout << -b << " " << a + c << " " << -b << " ";
-            else
-                cout << -c << " " << -c << " " << a + b << " ";
-            n -= 3;
+            ll p = (sqrt(1 + 8 * x) - 1) / 2;
+            p += 2;
+            while (p * 1ll * (p + 1) / 2 > x)
+                --p;
+            cout << p << endl;
         }
-        for (int i = 1; i <= n; i += 2)
+        else
         {
-            int a, b;
-            cin >> a >> b;
-            cout << -b << " " << a << " ";
+            x -= (1 + k) * 1ll * k / 2;
+            
         }
-        cout << "\n";
     }
     return 0;
 }
